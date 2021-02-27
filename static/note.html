@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
+    <link href="./css/index.css" type="text/css" rel="stylesheet" />
+    <title>StickyNote</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="titlebar">
+      <div class="btn">&#x2715;</div>
+    </div>
+    <div class="list">
+      <ul></ul>
+      <form autocomplete="off">
+        <input id="input" type="text" placeholder="Add new item..." />
+      </form>
+    </div>
+    <script src="./js/render.js" type="module" defer></script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+productName: "StickyNote"
+appId: "com.stickynote.app"
+asar: true
+extends: null
+win:
+  icon: "static/icons/win/icon.ico"
+  target:
+    - nsis
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  installerIcon: "static/icons/win/install.ico"
+  uninstallerIcon: "static/icons/win/uninstall.ico"
+  license: "LICENSE"
+  deleteAppDataOnUninstall: true
+  runAfterFinish: false
+  createDesktopShortcut: false
+  createStartMenuShortcut: true
+  shortcutName: "StickyNote"
+
+linux:
+  target: [deb, AppImage]
+  executableName: "StickyNote"
+  icon: "static/icons/mac/icon.icns"
+  maintainer: Kleo Hasani
+  category: "Utility"
+deb:
+  depends:
+    [
+      "gconf2",
+      "gconf-service",
+      "libnotify4",
+      "libappindicator1",
+      "libxtst6",
+      "libnss3",
+    ]
+
+files: ["!node_modules", "!__tests__", "!__mocks__", "!README.md"]
+directories:
+  output: "dist"
