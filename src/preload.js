@@ -5,8 +5,9 @@ const { contextBridge, ipcRenderer, BrowserWindow } = require("electron");
 const allowed_channels = [
   "window:close",
   "window:open",
-  "window:clear",
+  "window:deleteall",
   "window:new",
+  "window:reopen",
   "item:add",
   "item:delete",
   "item:deleted",
