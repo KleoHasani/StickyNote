@@ -5,8 +5,7 @@ A sticky notes app.
 ### Screenshots
 
 ![picture alt](/screenshots/screenshot1.png)
-![Dark Mode]("/screenshots/screenshot1.png")
-![Light Mode]("/screenshots/screenshot2.png")
+![picture alt](/screenshots/screenshot2.png)
 
 ### Getting Started
 
