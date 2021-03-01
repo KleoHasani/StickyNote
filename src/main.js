@@ -87,7 +87,7 @@ if (app.requestSingleInstanceLock())
       });
 
       ipcMain.on("item:update", (e, args) => {
-        m_store.updateItem(args.uuid, args.item);
+        m_store.setItem(args.uuid, args.item);
       });
     });
 

@@ -21,8 +21,11 @@ class Store {
     this.m_store = JSON.parse(
       readFileSync(this.m_base, { encoding: "utf-8", flag: "r" })
     );
-    this.length = this.m_store.length;
     this.isSave = true;
+  }
+
+  get length() {
+    return this.m_store.length;
   }
 
   /**
@@ -37,6 +40,7 @@ class Store {
 
   /**
    * @param {number} id
+   * @returns {object | null}
    */
   getNote(id) {
     if (this.m_store[id]) return this.m_store[id];
@@ -48,13 +52,17 @@ class Store {
    * @param {object} item
    */
   setItem(id, item) {
-    if (this.m_store[id]) this.m_store[id].push(item);
-    this.isSave = false;
+    if (this.m_store[id]) {
+      if (this.m_store[id][item.id]) this.m_store[id][item.id] = item;
+      else this.m_store[id].push(item);
+      this.isSave = false;
+    }
   }
 
   /**
    * @param {number} id
    * @param {number} iID
+   * @returns {object | null}
    */
   getItem(id, iID) {
     if (this.m_store[id][iID]) return this.m_store[id][iID];
@@ -68,17 +76,6 @@ class Store {
   removeItem(id, iID) {
     if (this.m_store[id]) {
       this.m_store[id] = this.m_store[id].filter((item) => item.id !== iID);
-      this.isSave = false;
-    }
-  }
-
-  /**
-   * @param {number} id
-   * @param {object} item
-   */
-  updateItem(id, item) {
-    if (this.m_store[id]) {
-      this.m_store[id][item.id].isChecked = item.isChecked;
       this.isSave = false;
     }
   }
@@ -106,7 +103,6 @@ class Store {
 
   clear() {
     this.m_store = [];
-    this.length = 0;
     this.isSave = false;
   }
 

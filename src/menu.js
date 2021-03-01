@@ -1,7 +1,6 @@
 "use strict";
 
 const { Menu, ipcMain, dialog, BrowserWindow } = require("electron");
-const { BrowserView } = require("electron/main");
 
 const appletMenu = Menu.buildFromTemplate([
   {
