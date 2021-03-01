@@ -29,19 +29,19 @@ npm start
 
 ### Required
 
-Electron v9.1.2
+- Electron v9.1.2
 
-Electron Builder v22.9.1
+- Electron Builder v22.9.1
 
-Node v12.19.0
+- Node v12.19.0
 
-NPM v6.14.7
+- NPM v6.14.7
 
 ### Build With
 
-Electron v11.3.0
+- Electron v11.3.0
 
-Electron Builder v26.6.3
+- Electron Builder v26.6.3
 
 Build:
 
