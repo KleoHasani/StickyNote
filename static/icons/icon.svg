@@ -14,9 +14,9 @@
    viewBox="0 0 500 500"
    height="500mm"
    width="500mm"
-   inkscape:export-filename="/home/c4pr4/Documents/WORK/sticky/static/icons/png/icon.png"
-   inkscape:export-xdpi="13"
-   inkscape:export-ydpi="13">
+   inkscape:export-filename="/home/c4pr4/Documents/WORK/StickyNote/static/icons/png/icon.png"
+   inkscape:export-xdpi="25.4"
+   inkscape:export-ydpi="25.4">
   <defs
      id="defs2">
     <rect
@@ -28,25 +28,25 @@
   </defs>
   <sodipodi:namedview
      inkscape:snap-grids="true"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:window-y="28"
-     inkscape:window-x="960"
-     inkscape:window-height="1012"
-     inkscape:window-width="960"
+     inkscape:window-x="0"
+     inkscape:window-height="1052"
+     inkscape:window-width="1920"
      showgrid="true"
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
      inkscape:cy="1154.9017"
-     inkscape:cx="1169.1782"
+     inkscape:cx="29.322099"
      inkscape:zoom="0.1767767"
      inkscape:pageshadow="2"
-     inkscape:pageopacity="0.12941176"
+     inkscape:pageopacity="0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#212121"
      id="base"
-     inkscape:pagecheckerboard="true">
+     inkscape:pagecheckerboard="false">
     <inkscape:grid
        type="xygrid"
        id="grid882" />
@@ -59,7 +59,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

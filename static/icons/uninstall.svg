@@ -14,7 +14,7 @@
    viewBox="0 0 500 500"
    height="500mm"
    width="500mm"
-   inkscape:export-filename="/home/c4pr4/Documents/WORK/sticky/static/icons/png/icon.png"
+   inkscape:export-filename="/home/c4pr4/Documents/WORK/StickyNote/static/icons/png/uninstall.png"
    inkscape:export-xdpi="25.4"
    inkscape:export-ydpi="25.4">
   <defs
@@ -28,25 +28,25 @@
   </defs>
   <sodipodi:namedview
      inkscape:snap-grids="true"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:window-y="28"
-     inkscape:window-x="961"
-     inkscape:window-height="1012"
-     inkscape:window-width="959"
+     inkscape:window-x="0"
+     inkscape:window-height="1052"
+     inkscape:window-width="1920"
      showgrid="true"
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="1494.3129"
-     inkscape:cx="896.07681"
-     inkscape:zoom="0.1767767"
+     inkscape:cy="1251.8603"
+     inkscape:cx="866.75399"
+     inkscape:zoom="0.25000001"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#212121"
      id="base"
-     inkscape:pagecheckerboard="true"
+     inkscape:pagecheckerboard="false"
      inkscape:showpageshadow="false"
      showborder="true">
     <inkscape:grid

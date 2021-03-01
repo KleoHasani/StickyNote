@@ -56,7 +56,7 @@ dist/_installer_.AppImage
 
 ## Version
 
-1.0.0
+1.0.1
 
 ## Authors
 
