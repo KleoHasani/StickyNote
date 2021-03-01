@@ -4,8 +4,8 @@ A sticky notes app.
 
 ### Screenshots
 
-![Dark Mode]("https://raw.githubusercontent.com/KleoHasani/StickyNote/main/screenshots/screenshot1.png")
-![Light Mode]("./screenshots/screenshot2.png")
+![Dark Mode]("https://github.com/KleoHasani/StickyNote/blob/main/screenshots/screenshot1.png")
+![Light Mode]("https://github.com/KleoHasani/StickyNote/blob/main/screenshots/screenshot2.png")
 
 ### Getting Started
 
