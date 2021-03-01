@@ -4,8 +4,10 @@ A sticky notes app.
 
 ---
 
-![picture alt](/screenshots/screenshot1.png)
-![picture alt](/screenshots/screenshot2.png)
+<p align="center">
+<img src="/screenshots/screenshot1.png"/>
+<img src="/screenshots/screenshot2.png"/>
+</p>
 
 ---
 
