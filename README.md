@@ -4,7 +4,8 @@ A sticky notes app.
 
 ### Screenshots
 
-![picture alt](/screenshots/screenshot1.png) | ![picture alt](/screenshots/screenshot2.png)
+![picture alt](/screenshots/screenshot1.png)
+![picture alt](/screenshots/screenshot2.png)
 
 ### Getting Started
 
