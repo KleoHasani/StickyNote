@@ -4,6 +4,7 @@ A sticky notes app.
 
 ### Screenshots
 
+![picture alt](https://github.com/KleoHasani/StickyNote/blob/main/screenshots/screenshot1.png)
 ![Dark Mode]("/screenshots/screenshot1.png")
 ![Light Mode]("/screenshots/screenshot2.png")
 
