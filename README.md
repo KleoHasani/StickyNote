@@ -2,28 +2,30 @@
 
 A sticky notes app.
 
-### Screenshots
+---
 
 ![picture alt](/screenshots/screenshot1.png)
 ![picture alt](/screenshots/screenshot2.png)
 
-### Getting Started
+---
+
+## Getting Started
 
 Clone:
 
-```
+```git
 git clone https://github.com/KleoHasani/StickyNote.git
 ```
 
 Install dependencies:
 
-```
+```npm
 npm install
 ```
 
 Start:
 
-```
+```npm
 npm start
 ```
 
@@ -45,7 +47,7 @@ npm start
 
 Build:
 
-```
+```npm
 npm run dist
 ```
 
@@ -59,15 +61,15 @@ Debian:
 
 - dist/_installer_.AppImage
 
-### Version
+## Version
 
 1.0.2
 
-### Authors
+## Authors
 
 Kleo Hasani
 
-### Notes
+## Notes
 
 Support for:
 
@@ -76,5 +78,3 @@ Support for:
 - [x] Debian 10
 
 - [x] AppImage
-
-**Thank You**
