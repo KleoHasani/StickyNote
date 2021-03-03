@@ -11,6 +11,14 @@ const appletMenu = Menu.buildFromTemplate([
     },
   },
   {
+    label: "Always On Top",
+    type: "checkbox",
+    checked: globalThis.settings.isAlwaysOnTop,
+    click: () => {
+      ipcMain.emit("window:toptoggle");
+    },
+  },
+  {
     type: "separator",
   },
   {

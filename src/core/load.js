@@ -3,7 +3,7 @@
 const { app, nativeTheme } = require("electron");
 const { resolve } = require("path");
 
-const base = resolve(app.getAppPath());
+const m_base = resolve(app.getAppPath());
 
 module.exports = {
   /**
@@ -11,7 +11,7 @@ module.exports = {
    * @returns {string}
    */
   loadView: (name) => {
-    return resolve(base, "static", `${name}.html`);
+    return resolve(m_base, "static", `${name}.html`);
   },
 
   /**
@@ -20,11 +20,11 @@ module.exports = {
   loadIcon: () => {
     switch (process.platform) {
       case "win32":
-        return resolve(base, "static", "icons", "win", "icon.ico");
+        return resolve(m_base, "static", "icons", "win", "icon.ico");
       case "darwin":
-        return resolve(base, "static", "icons", "mac", "icon.icns");
+        return resolve(m_base, "static", "icons", "mac", "icon.icns");
       default:
-        return resolve(base, "static", "icons", "png", "icon.png");
+        return resolve(m_base, "static", "icons", "png", "icon.png");
     }
   },
 
@@ -40,13 +40,13 @@ module.exports = {
         ? "tray-dark.png"
         : "tray-light.png";
 
-    return resolve(base, "static", "icons", "png", m_trayIconName);
+    return resolve(m_base, "static", "icons", "png", m_trayIconName);
   },
 
   /**
    * @returns {string}
    */
   loadScript: () => {
-    return resolve(base, "src", "preload.js");
+    return resolve(m_base, "src", "preload.js");
   },
 };

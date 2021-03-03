@@ -1,7 +1,7 @@
 "use strict";
 
 const { ipcMain } = require("electron");
-const { BWindow } = require("../core/BWindow");
+const { createWindow } = require("../core/architect");
 const { loadIcon, loadScript } = require("../core/load");
 
 const m_opts = {
@@ -13,6 +13,7 @@ const m_opts = {
   transparent: false,
   frame: false,
   show: false,
+  alwaysOnTop: true,
   icon: loadIcon(),
   webPreferences: {
     preload: loadScript(),
@@ -28,34 +29,40 @@ const m_opts = {
   },
 };
 
-class Note extends BWindow {
+class Note {
   /**
    * @param {object} data
    */
   constructor(data) {
-    super("note", m_opts);
-
     this.m_x = globalThis.m_x - 320;
     this.m_y = 50;
+    this.uuid = data.uuid; // unique note id
+    this.window = createWindow("note", m_opts);
+    //    this.window.setMenu(null);
+    // ready
+    this.window.on("ready-to-show", () => {
+      this.window.setBounds({ x: this.m_x, y: this.m_y });
 
-    // unique note tracker
-    this.uuid = data.uuid;
+      if (data.note) this.window.webContents.send("window:open", data);
+      else this.window.webContents.send("window:new", data);
 
-    //this.setMenu(null);
-
-    this.addListener("ready-to-show", () => {
-      this.setBounds({ x: this.m_x, y: this.m_y });
-
-      if (data.note) this.webContents.send("window:open", data);
-      else this.webContents.send("window:new", data);
-
-      this.show();
-      this.focus();
-
-      this.on("close", () => {
-        ipcMain.emit("window:close", { uuid: this.uuid });
-      });
+      this.window.show();
+      this.window.focus();
     });
+
+    // toggle always on top
+    ipcMain.on("window:toptoggle", () => {
+      this.window.setAlwaysOnTop(!this.window.isAlwaysOnTop());
+    });
+
+    // close
+    this.window.on("close", () => {
+      ipcMain.emit("window:close", { uuid: this.uuid });
+    });
+  }
+
+  close() {
+    this.window.close();
   }
 }
 
