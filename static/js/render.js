@@ -66,8 +66,6 @@ window.addEventListener("load", () => {
     e.preventDefault();
 
     if (e.target.input.value !== "") {
-      console.log(ui_list.children.length);
-      console.log(m_uuid);
       const m_item = {
         id: ui_list.children.length,
         text: e.target.input.value,

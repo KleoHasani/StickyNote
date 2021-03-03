@@ -54,7 +54,7 @@ if (app.requestSingleInstanceLock())
       // listeners
       ipcMain.on("window:new", () => {
         m_store.setNote(m_store.length, []);
-        m_notes.push(new Note({ uuid: m_store.length, note: [] }));
+        m_notes.push(new Note({ uuid: m_store.length - 1, note: [] }));
       });
 
       ipcMain.on("window:reopen", () => {
