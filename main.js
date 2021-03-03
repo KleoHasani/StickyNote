@@ -1,17 +1,17 @@
 "use strict";
 
 const { app, screen, ipcMain } = require("electron");
-const { createAlert, createApplet } = require("./core/architect");
-const { loadTray } = require("./core/load");
-const { Store } = require("./core/Store");
+const { createAlert, createApplet } = require("./src/core/architect");
+const { loadTray } = require("./src/core/load");
+const { Store } = require("./src/core/Store");
 
 // load settings to global
-require("./core/settings")(app);
+require("./src/core/settings")(app);
 
-const { Note } = require("./components/Note");
+const { Note } = require("./src/components/Note");
 
-const { appletMenu } = require("./menu");
-const { log } = require("./core/log");
+const { appletMenu } = require("./src/menu");
+const { log } = require("./src/core/log");
 
 if (app.requestSingleInstanceLock()) {
   // init
