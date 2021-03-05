@@ -66,6 +66,10 @@ if (app.requestSingleInstanceLock()) {
       if (!this.store.isSave) this.store.save();
       this.notes = this.notes.filter((note) => note.uuid !== args.uuid);
     });
+
+    ipcMain.on("window:top", (args) => {
+      this.notes.forEach((note) => note.window.setAlwaysOnTop(args.checked));
+    });
     // add item to note
     ipcMain.on("item:add", (e, args) => {
       this.store.setItem(args.uuid, args.item);
