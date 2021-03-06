@@ -1,6 +1,6 @@
 "use strict";
 
-const { contextBridge, ipcRenderer, BrowserWindow } = require("electron");
+const { contextBridge, ipcRenderer } = require("electron");
 
 const allowed_channels = [
   "window:close",
