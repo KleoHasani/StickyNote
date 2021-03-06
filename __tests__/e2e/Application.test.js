@@ -1,8 +1,10 @@
+"use strict";
+
 const { Application } = require("spectron");
 const { resolve, join } = require("path");
 
 describe("Application Launch", () => {
-  jest.setTimeout(10000);
+  jest.setTimeout(40000);
 
   beforeAll(async () => {
     this.app = new Application({

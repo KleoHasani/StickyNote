@@ -11,7 +11,7 @@ const ListItem = (data) => {
   const _text = document.createElement("label");
   const _check = document.createElement("input");
   const _delete = document.createElement("button");
-  _delete.innerHTML = "&#x2717;";
+  _delete.innerHTML = "&#10005;";
 
   _delete.addEventListener("click", (e) => {
     e.preventDefault();

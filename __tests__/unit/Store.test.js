@@ -1,3 +1,5 @@
+"use strict";
+
 const { rmSync, accessSync, constants } = require("fs");
 const { resolve } = require("path");
 const { Store } = require("../../src/core/Store");

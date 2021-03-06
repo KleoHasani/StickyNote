@@ -5,7 +5,7 @@ const { createAlert, createApplet } = require("./src/core/architect");
 const { loadTray } = require("./src/core/load");
 const { Store } = require("./src/core/Store");
 
-// load settings to global
+// load static global settings
 require("./src/core/settings")(app);
 
 const { Note } = require("./src/components/Note");
@@ -41,10 +41,14 @@ if (app.requestSingleInstanceLock()) {
       this.store.values.forEach((note, i) => {
         this.notes.push(new Note({ uuid: i, note }));
       });
+    else {
+      this.notes.push(new Note({ uuid: this.store.length, note: [] }));
+      this.store.setNote(this.store.length, []);
+    }
     // new note window
     ipcMain.on("window:new", () => {
+      this.notes.push(new Note({ uuid: this.store.length, note: [] }));
       this.store.setNote(this.store.length, []);
-      this.notes.push(new Note({ uuid: this.store.length - 1, note: [] }));
     });
     // reopen all notes
     ipcMain.on("window:reopen", () => {
