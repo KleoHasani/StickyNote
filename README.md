@@ -43,9 +43,7 @@ npm start
 
 ### Build With
 
-- Electron v11.3.0
-
-- Electron Builder v26.6.3
+- Electron Builder v22.9.1
 
 Build:
 
@@ -65,7 +63,7 @@ Debian:
 
 ## Version
 
-1.0.3
+v1.0.3
 
 ## Authors
 
