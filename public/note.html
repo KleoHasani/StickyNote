@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="manifest.json" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <title>StickyNote</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="app">
+      <div class="titlebar">
+        <div class="btn-group">
+          <div id="btn-new" class="btn">&#65291;</div>
+          <div id="btn-pin" class="btn">&#8226;</div>
+        </div>
+        <div class="btn-group">
+          <div id="btn-settings" class="btn">&#8942;</div>
+          <div id="btn-close" class="btn">&#x2715;</div>
+        </div>
+      </div>
+      <div class="textarea" contenteditable="true"></div>
+    </div>
+
+    <script src="js/render.js" type="module" defer></script>
+  </body>
+</html>

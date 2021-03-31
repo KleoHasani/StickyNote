@@ -1,52 +1,56 @@
 "use strict";
-
-const { app, nativeTheme } = require("electron");
+const { app, nativeImage } = require("electron");
 const { resolve } = require("path");
 
-const m_base = resolve(app.getAppPath());
+const _base = app.getAppPath();
 
-module.exports = {
-  /**
-   * @param {string} name
-   * @returns {string}
-   */
-  loadView: (name) => {
-    return resolve(m_base, "static", `${name}.html`);
-  },
-
-  /**
-   * @returns {string}
-   */
-  loadIcon: () => {
-    switch (process.platform) {
-      case "win32":
-        return resolve(m_base, "static", "icons", "win", "icon.ico");
-      case "darwin":
-        return resolve(m_base, "static", "icons", "mac", "icon.icns");
-      default:
-        return resolve(m_base, "static", "icons", "png", "icon.png");
-    }
-  },
-
-  /**
-   * @returns {string}
-   */
-  loadTray: () => {
-    let m_trayIconName;
-
-    if (process.platform === "linux") m_trayIconName = "tray-dark.png";
-    else
-      m_trayIconName = nativeTheme.shouldUseDarkColors
-        ? "tray-dark.png"
-        : "tray-light.png";
-
-    return resolve(m_base, "static", "icons", "png", m_trayIconName);
-  },
-
-  /**
-   * @returns {string}
-   */
-  loadScript: () => {
-    return resolve(m_base, "src", "preload.js");
-  },
+/**
+ * @param {string} name
+ * @returns {string}
+ */
+const view = (name) => {
+  return resolve(_base, "public", `${name}.html`);
 };
+
+/**
+ * @returns {NativeImage}
+ */
+const icon = () => {
+  let _ext = "png";
+
+  switch (process.platform) {
+    case "darwin":
+      _ext = "icns";
+    case "win32":
+      _ext = "ico";
+    default:
+      break;
+  }
+
+  return resolve(_base, "public", "icons", `icon.${_ext}`);
+};
+
+/**
+ * Resolve file path for asset. Supported asset extensions ["png", "jpg", "jpeg"]
+ * @param {string} name
+ * @param {string} ext
+ * @returns {string}
+ */
+const asset = (name, ext) => {
+  if (!name || name === "") throw new Error("Asset file name can not be empty");
+
+  const ALLOWED_ASSET_EXT = ["png", "jpg", "jpeg"];
+  if (!ALLOWED_ASSET_EXT.includes(ext))
+    throw new Error("Unsupported asset type");
+
+  return resolve(_base, "assets", `${name}.${ext}`);
+};
+
+const script = (name) => {
+  if (!name || name === "")
+    throw new Error("Script file name can not be empty");
+
+  return resolve(_base, "scripts", `${name}.js`);
+};
+
+module.exports = { view, icon, asset, script };
