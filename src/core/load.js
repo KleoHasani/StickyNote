@@ -17,7 +17,6 @@ const view = (name) => {
  */
 const icon = () => {
   let _ext = "png";
-
   switch (process.platform) {
     case "darwin":
       _ext = "icns";
@@ -26,30 +25,27 @@ const icon = () => {
     default:
       break;
   }
-
   return resolve(_base, "public", "icons", `icon.${_ext}`);
 };
 
 /**
- * Resolve file path for asset. Supported asset extensions ["png", "jpg", "jpeg"]
+ * Resolve file path for asset.
+ * Supported asset extensions ["png", "jpg", "jpeg"]
  * @param {string} name
  * @param {string} ext
  * @returns {string}
  */
 const asset = (name, ext) => {
   if (!name || name === "") throw new Error("Asset file name can not be empty");
-
   const ALLOWED_ASSET_EXT = ["png", "jpg", "jpeg"];
   if (!ALLOWED_ASSET_EXT.includes(ext))
     throw new Error("Unsupported asset type");
-
   return resolve(_base, "assets", `${name}.${ext}`);
 };
 
 const script = (name) => {
   if (!name || name === "")
     throw new Error("Script file name can not be empty");
-
   return resolve(_base, "scripts", `${name}.js`);
 };
 
