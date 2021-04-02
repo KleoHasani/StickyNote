@@ -21,13 +21,25 @@ if (app.requestSingleInstanceLock())
 
     app
       .whenReady()
+      // Async operations
       .then(async () => {
         await this.settings.load();
         await this.store.load();
       })
+      // Init and render
       .then(() => {
         // Get primary screen width to determine position of Sticky Note
         const screen_width = screen.getPrimaryDisplay().size.width;
+
+        // fake window for testing
+        this.notes.push(
+          new Window("note", {
+            x: screen_width,
+            y: 0,
+            isPinned: false,
+          }),
+        );
+        // end of fake window for testing
 
         // Render all sticky notes from store
         for (let item of this.store.items)
@@ -39,12 +51,18 @@ if (app.requestSingleInstanceLock())
             }),
           );
       })
+      // Listeners
+      .then(() => {})
+      // errors
       .catch((err) => console.error(err));
 
+    // Clean-up
     app.once("before-quit", async () => {
+      console.log("Got here");
       await this.store.save();
     });
 
+    // Quit when all windows are closed
     app.once("window-all-closed", () => app.quit());
   })();
 else app.exit(0);
