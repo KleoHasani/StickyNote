@@ -1,8 +1,9 @@
 "use strict";
 
-const { app } = require("electron");
+const { app, screen } = require("electron");
 const { resolve } = require("path");
 const { Storage } = require("./core/Storage");
+const { Window } = require("./core/Window");
 
 if (app.requestSingleInstanceLock())
   (() => {
@@ -11,7 +12,7 @@ if (app.requestSingleInstanceLock())
       [
         {
           key: "isPinned",
-          data: true,
+          value: true,
         },
       ],
     );
@@ -24,8 +25,25 @@ if (app.requestSingleInstanceLock())
         await this.settings.load();
         await this.store.load();
       })
-      .then(() => {})
+      .then(() => {
+        // Get primary screen width to determine position of Sticky Note
+        const screen_width = screen.getPrimaryDisplay().size.width;
+
+        // Render all sticky notes from store
+        for (let item of this.store.items)
+          this.notes.push(
+            new Window("note", {
+              x: screen_width,
+              y: 0,
+              isPinned: item.value.isPinned,
+            }),
+          );
+      })
       .catch((err) => console.error(err));
+
+    app.once("before-quit", async () => {
+      await this.store.save();
+    });
 
     app.once("window-all-closed", () => app.quit());
   })();

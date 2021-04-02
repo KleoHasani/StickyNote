@@ -53,25 +53,28 @@ class Storage {
     return this._storage.length;
   }
 
+  get items() {
+    return this._storage.values();
+  }
+
   /**
    * Set item in memory store
    * @param {object} item
-   * @param {number} item.key
-   * @param {string} item.data
+   * @param {any} item.key
+   * @param {any} item.value
    */
   setItem(item) {
     if (!item) throw new Error("No item provided");
-    this._storage.find((itm) => {
-      if (itm.key === item.key) itm.data = item.data;
-      else this._storage.push(item);
-    });
+    const found_item = this._storage.find((itm) => itm.key === item.key);
+    if (found_item) found_item.value = item.value;
+    else this._storage.push(item);
     this._isSaved = false;
   }
 
   /**
    * Retrieve item by key from in-memory store
    * return object or undefined if not found
-   * @param {string | number} key
+   * @param {any} key
    * @returns {object | undefined}
    */
   getItem(key) {
@@ -81,7 +84,7 @@ class Storage {
 
   /**
    * Remove item from in-memory store
-   * @param {string | number} key
+   * @param {any} key
    * @returns {void}
    */
   removeItem(key) {
