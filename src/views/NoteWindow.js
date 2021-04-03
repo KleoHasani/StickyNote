@@ -1,16 +1,18 @@
 "use strict";
 
 const { BrowserWindow } = require("electron");
-const { view, icon, script } = require("./load");
+const { view, icon, script } = require("../core/load");
 
-class Window {
+class NoteWindow {
   /**
-   * @param {string} name
+   * @param {string} uuid
    * @param {number} opts.x
    * @param {number} opts.y
    * @param {boolean} opts.isPinned
    */
-  constructor(name, opts = { x, y, isPinned }) {
+  constructor(uuid, opts = { x, y, isPinned }) {
+    this._uuid = uuid;
+    console.log(this._uuid);
     this._window = new BrowserWindow({
       width: 300,
       height: 350,
@@ -40,7 +42,7 @@ class Window {
       },
     });
 
-    this._window.loadFile(view(name));
+    this._window.loadFile(view);
     this._window.once("ready-to-show", () => {
       this._window.show();
       this._window.focus();
@@ -50,6 +52,10 @@ class Window {
   close() {
     this._window.close();
   }
+
+  togglePin() {
+    this._window.setAlwaysOnTop(!this._window.isAlwaysOnTop());
+  }
 }
 
-module.exports = { Window };
+module.exports = { NoteWindow };

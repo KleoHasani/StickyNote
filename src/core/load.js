@@ -4,13 +4,8 @@ const { resolve } = require("path");
 
 const _base = app.getAppPath();
 
-/**
- * @param {string} name
- * @returns {string}
- */
-const view = (name) => {
-  return resolve(_base, "public", `${name}.html`);
-};
+// Resolve index view path
+const view = resolve(_base, "public", "index.html");
 
 /**
  * @returns {NativeImage}
