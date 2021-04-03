@@ -6,11 +6,12 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self';" />
     <link rel="manifest" href="./manifest.json" />
     <link href="style.css" type="text/css" rel="stylesheet" />
-    <script src="index.js" type="module"></script>
+    <script src="init.js" type="module"></script>
     <title>StickyNote</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <app-titlebar />
+    <div id="app"></div>
+    <script src="render.js" type="module" defer></script>
   </body>
 </html>

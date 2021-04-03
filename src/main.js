@@ -62,7 +62,9 @@ if (app.requestSingleInstanceLock())
           );
         });
 
-        ipcMain.on("window:pin", () => {});
+        ipcMain.on("window:pin", (e, data) => {
+          console.log(data);
+        });
 
         ipcMain.on("window:settings", () => {});
       })

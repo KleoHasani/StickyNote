@@ -76,10 +76,9 @@ class Titlebar extends HTMLElement {
   /**
    * @param {string} uid
    */
-  constructor() {
+  constructor(uid) {
     super();
-    this.uid = localStorage.getItem("uid");
-    console.log(this.uid);
+    this.uid = uid;
     this.attachShadow({ mode: "open" });
   }
 
@@ -91,7 +90,7 @@ class Titlebar extends HTMLElement {
     this.btnClose = this.shadowRoot.querySelector("#btn-close");
 
     this.btnNew.onclick = () => {
-      window.electron.ipcSend("window:new", { uid: this.uid });
+      window.electron.ipcSend("window:new");
     };
 
     this.btnPin.onclick = () => {
