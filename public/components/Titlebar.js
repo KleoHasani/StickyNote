@@ -73,8 +73,13 @@ style.textContent = `
 }`;
 
 class Titlebar extends HTMLElement {
+  /**
+   * @param {string} uid
+   */
   constructor() {
     super();
+    this.uid = localStorage.getItem("uid");
+    console.log(this.uid);
     this.attachShadow({ mode: "open" });
   }
 
@@ -86,11 +91,11 @@ class Titlebar extends HTMLElement {
     this.btnClose = this.shadowRoot.querySelector("#btn-close");
 
     this.btnNew.onclick = () => {
-      window.electron.icpSend("window:new", { id: this._awid });
+      window.electron.ipcSend("window:new", { uid: this.uid });
     };
 
     this.btnPin.onclick = () => {
-      window.electron.icpSend("window:pin", { id: this._awid });
+      window.electron.ipcSend("window:pin", { uid: this.uid });
     };
 
     this.btnSettings.onclick = () => {};

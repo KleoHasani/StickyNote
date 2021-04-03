@@ -2,7 +2,12 @@
 
 const { contextBridge, ipcRenderer } = require("electron");
 
-const ALLOWED_CHANNELS = ["window:new", "window:pin", "window:settings"];
+const ALLOWED_CHANNELS = [
+  "window:new",
+  "window:ready",
+  "window:pin",
+  "window:settings",
+];
 
 contextBridge.exposeInMainWorld("electron", {
   /**
