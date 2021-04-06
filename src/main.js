@@ -15,6 +15,10 @@ if (app.requestSingleInstanceLock())
           key: "isPinned",
           value: true,
         },
+        {
+          key: "maxNotes",
+          value: 10,
+        },
       ],
     );
     this.store = new Storage(resolve(app.getPath("userData"), "store.json"));
@@ -31,6 +35,8 @@ if (app.requestSingleInstanceLock())
       .then(() => {
         // Get primary screen width to determine position of Sticky Note
         const screen_width = screen.getPrimaryDisplay().size.width;
+
+        globalThis.settings = Array.from(this.settings.items);
 
         if (this.store.length > 0)
           // Render all sticky notes from store

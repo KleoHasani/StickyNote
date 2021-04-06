@@ -13,15 +13,16 @@
   --onOk: #ecf0f1;
 }
 
-body {
-  margin: 0em;
+* {
   padding: 0em;
+  margin: 0em;
+}
+
+body {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow: none;
   background: var(--background);
   color: var(--onBackground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -88,13 +89,4 @@ body {
 
 #btn-close:hover {
   color: var(--danger);
-}
-
-.textarea {
-  width: inherit;
-  height: inherit;
-  outline: none;
-  background: transparent;
-  overflow-y: auto;
-  cursor: default;
 }

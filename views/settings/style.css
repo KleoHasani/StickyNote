@@ -1,0 +1,81 @@
+* {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  overflow: none;
+}
+
+h2 {
+  padding: 0.5em 0.3em;
+  background: var(--secondary);
+  color: var(--onSecondary);
+  border-radius: 0em;
+  margin-bottom: 1em;
+  app-region: drag;
+  -moz-app-region: drag;
+  -webkit-app-region: drag;
+}
+
+select {
+  padding: 0.8em;
+  border-radius: 0.2em;
+  border: 0.1em solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  outline: none;
+}
+
+select:hover {
+  background: var(--primary);
+  color: var(--onPrimary);
+}
+
+.settings {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.settings-item {
+  display: grid;
+  grid-template-columns: auto 25%;
+  margin: 0em 1em 1em 1em;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0em 1em 1em 1em;
+}
+
+.btn {
+  width: 6em;
+  height: 0.5em;
+  padding: 1em 0.5em;
+  border-radius: 0.2em;
+  background: transparent;
+}
+
+#btn-save {
+  border: 0.1em solid var(--primary);
+  color: var(--primary);
+}
+
+#btn-save:hover {
+  background: var(--primary);
+  color: var(--onPrimary) !important;
+}
+
+#btn-close {
+  border: 0.1em solid var(--danger);
+  color: var(--danger);
+}
+
+#btn-close:hover {
+  background: var(--danger);
+  color: var(--onDanger) !important;
+}

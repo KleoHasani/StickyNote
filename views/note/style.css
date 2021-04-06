@@ -1,0 +1,13 @@
+body {
+  justify-content: space-between;
+  overflow: none;
+}
+
+.textarea {
+  width: inherit;
+  height: inherit;
+  outline: none;
+  background: transparent;
+  overflow-y: auto;
+  cursor: default;
+}

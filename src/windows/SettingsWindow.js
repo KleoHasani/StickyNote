@@ -16,9 +16,11 @@ class SettingsWindow {
       height: 400,
       minWidth: 600,
       minHeight: 400,
+      maxWidth: 600,
+      maxHeight: 400,
       fullscreenable: false,
       transparent: false,
-      frame: true,
+      frame: false,
       show: false,
       icon: icon(),
       parent: this.parent,
@@ -39,9 +41,13 @@ class SettingsWindow {
     });
 
     this._window.loadFile(view("settings"));
+
     this._window.once("ready-to-show", () => {
       this._window.show();
       this._window.focus();
+      this._window.webContents.send("window:ready", {
+        settings: globalThis.settings,
+      });
     });
 
     this._window.once("close", () => {
