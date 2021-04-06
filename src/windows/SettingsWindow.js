@@ -1,6 +1,6 @@
 "use strict";
 
-const { BrowserWindow } = require("electron");
+const { BrowserWindow, ipcMain } = require("electron");
 const { view, icon, script } = require("../core/load");
 
 class SettingsWindow {
@@ -47,12 +47,6 @@ class SettingsWindow {
       this._window.focus();
       this._window.webContents.send("window:ready", {
         settings: globalThis.settings,
-      });
-    });
-
-    this._window.once("close", () => {
-      this.parent.webContents.send("render:titlebar-update-btnSettings", {
-        isVisible: true,
       });
     });
   }

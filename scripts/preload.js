@@ -6,7 +6,7 @@ const ALLOWED_CHANNELS = [
   "window:new",
   "window:ready",
   "window:pin",
-  "window:settings",
+  "window:toggle-settings",
   "render:titlebar-update-btnSettings",
   "render:window-update-btnPin",
   "action:save",

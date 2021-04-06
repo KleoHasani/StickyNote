@@ -69,15 +69,22 @@ if (app.requestSingleInstanceLock())
         });
 
         ipcMain.on("window:pin", (e, data) => {
+          if (!data.uid)
+            throw new Error("Unable to pin window. Window ID was not provided");
           this.notes.find((note) => {
             if (note.uid === data.uid) note.togglePin();
           });
         });
 
-        ipcMain.on("window:settings", (e, data) => {
+        ipcMain.on("window:toggle-settings", (e, data) => {
+          if (!data.uid && !data.isVisible)
+            throw new Error(
+              "Unable to open settings. Window ID or window visibility status was not provided",
+            );
           this.notes.forEach((note) => {
-            if (note.uid === data.uid) note.spawnSettingsChildWindow();
-            note.hideTitlebarSettingsButton();
+            if (note.uid && note.uid === data.uid)
+              note.spawnSettingsChildWindow();
+            note.toggleTitlebarSettingsButton(data.isVisible);
           });
         });
       })

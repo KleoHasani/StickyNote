@@ -12,5 +12,6 @@ window.electron.ipcOnce("window:ready", (e, data) => {
 
 // render listeners
 btnClose.onclick = () => {
+  window.electron.ipcSend("window:toggle-settings", { isVisible: true });
   window.close();
 };

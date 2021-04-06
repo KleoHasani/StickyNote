@@ -70,9 +70,10 @@ class NoteWindow {
     return _child;
   }
 
-  hideTitlebarSettingsButton() {
+  toggleTitlebarSettingsButton(isVisible) {
+    if (!isVisible) throw new Error("Window visibility state was not provided");
     this._window.webContents.send("render:titlebar-update-btnSettings", {
-      isVisible: false,
+      isVisible,
     });
   }
 }
