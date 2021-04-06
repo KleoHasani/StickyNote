@@ -4,7 +4,7 @@ const { app, screen, ipcMain } = require("electron");
 const { resolve } = require("path");
 const { Storage } = require("./core/Storage");
 const { uid } = require("./core/uid");
-const { NoteWindow } = require("./views/NoteWindow");
+const { NoteWindow } = require("./windows/NoteWindow");
 
 if (app.requestSingleInstanceLock())
   (() => {
@@ -63,10 +63,17 @@ if (app.requestSingleInstanceLock())
         });
 
         ipcMain.on("window:pin", (e, data) => {
-          console.log(data);
+          this.notes.find((note) => {
+            if (note.uid === data.uid) note.togglePin();
+          });
         });
 
-        ipcMain.on("window:settings", () => {});
+        ipcMain.on("window:settings", (e, data) => {
+          this.notes.forEach((note) => {
+            if (note.uid === data.uid) note.spawnSettingsChildWindow();
+            note.hideTitlebarSettingsButton();
+          });
+        });
       })
       // errors
       .catch((err) => console.error(err));

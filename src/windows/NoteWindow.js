@@ -1,7 +1,8 @@
 "use strict";
 
-const { BrowserWindow, ipcMain } = require("electron");
+const { BrowserWindow } = require("electron");
 const { view, icon, script } = require("../core/load");
+const { SettingsWindow } = require("./SettingsWindow");
 
 class NoteWindow {
   /**
@@ -41,11 +42,14 @@ class NoteWindow {
       },
     });
 
-    this._window.loadFile(view);
+    this._window.loadFile(view("note"));
     this._window.once("ready-to-show", () => {
       this._window.show();
       this._window.focus();
-      this._window.webContents.send("window:ready", { uid: this.uid });
+      this._window.webContents.send("window:ready", {
+        uid: this.uid,
+        isPinned: opts.isPinned,
+      });
     });
   }
 
@@ -54,7 +58,22 @@ class NoteWindow {
   }
 
   togglePin() {
-    this._window.setAlwaysOnTop(!this._window.isAlwaysOnTop());
+    const isPinned = !this._window.isAlwaysOnTop();
+    this._window.setAlwaysOnTop(isPinned);
+    this._window.webContents.send("render:window-update-btnPin", {
+      isPinned,
+    });
+  }
+
+  spawnSettingsChildWindow() {
+    const _child = new SettingsWindow(this, true);
+    return _child;
+  }
+
+  hideTitlebarSettingsButton() {
+    this._window.webContents.send("render:titlebar-update-btnSettings", {
+      isVisible: false,
+    });
   }
 }
 

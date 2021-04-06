@@ -1,16 +1,22 @@
 "use strict";
-const { app, nativeImage } = require("electron");
+const { app } = require("electron");
 const { resolve } = require("path");
 
 const _base = app.getAppPath();
 
-// Resolve index view path
-const view = resolve(_base, "public", "index.html");
+/**
+ * Resolve index view path
+ * @param {string} name
+ */
+function view(name) {
+  if (!name) throw new Error("No view name provided");
+  return resolve(_base, "views", `${name}`, "view.html");
+}
 
 /**
- * @returns {NativeImage}
+ * @returns {string}
  */
-const icon = () => {
+function icon() {
   let _ext = "png";
   switch (process.platform) {
     case "darwin":
@@ -20,8 +26,8 @@ const icon = () => {
     default:
       break;
   }
-  return resolve(_base, "public", "icons", `icon.${_ext}`);
-};
+  return resolve(_base, "icons", `icon.${_ext}`);
+}
 
 /**
  * Resolve file path for asset.
@@ -31,7 +37,7 @@ const icon = () => {
  * @returns {string}
  */
 const asset = (name, ext) => {
-  if (!name || name === "") throw new Error("Asset file name can not be empty");
+  if (!name) throw new Error("Asset file name not provided");
   const ALLOWED_ASSET_EXT = ["png", "jpg", "jpeg"];
   if (!ALLOWED_ASSET_EXT.includes(ext))
     throw new Error("Unsupported asset type");
@@ -39,8 +45,7 @@ const asset = (name, ext) => {
 };
 
 const script = (name) => {
-  if (!name || name === "")
-    throw new Error("Script file name can not be empty");
+  if (!name) throw new Error("Script file name not provided");
   return resolve(_base, "scripts", `${name}.js`);
 };
 

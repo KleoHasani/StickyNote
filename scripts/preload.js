@@ -7,6 +7,9 @@ const ALLOWED_CHANNELS = [
   "window:ready",
   "window:pin",
   "window:settings",
+  "render:titlebar-update-btnSettings",
+  "render:window-update-btnPin",
+  "action:save",
 ];
 
 contextBridge.exposeInMainWorld("electron", {

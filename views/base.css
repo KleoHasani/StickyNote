@@ -1,0 +1,100 @@
+:root {
+  --primary: #29b6f6;
+  --secondary: #00838f;
+  --background: #ecf0f1;
+  --onPrimary: #ecf0f1;
+  --onSecondary: #ecf0f1;
+  --onBackground: #000000;
+  --danger: #e74c3c;
+  --warning: #f39c12;
+  --ok: #2ecc71;
+  --onDanger: #ecf0f1;
+  --onWarning: #ecf0f1;
+  --onOk: #ecf0f1;
+}
+
+body {
+  margin: 0em;
+  padding: 0em;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: none;
+  background: var(--background);
+  color: var(--onBackground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.titlebar {
+  width: inherit;
+  height: 2.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--primary);
+  color: var(--onPrimary);
+  app-region: drag;
+  -moz-app-region: drag;
+  -webkit-app-region: drag;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  margin: 0em 0.2em;
+}
+
+.btn {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  app-region: no-drag;
+  -moz-app-region: no-drag;
+  -webkit-app-region: no-drag;
+}
+
+.btn:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+#btn-new:hover {
+  color: var(--ok);
+}
+
+#btn-pin:hover {
+  color: var(--warning);
+}
+
+.btn-pin-active {
+  color: var(--warning);
+}
+
+#btn-close:hover {
+  color: var(--danger);
+}
+
+.textarea {
+  width: inherit;
+  height: inherit;
+  outline: none;
+  background: transparent;
+  overflow-y: auto;
+  cursor: default;
+}
