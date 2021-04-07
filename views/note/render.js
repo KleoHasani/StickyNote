@@ -9,16 +9,16 @@ const btnClose = document.querySelector("#btn-close");
 
 // electron API listeners
 window.electron.ipcOnce("window:ready", (e, data) => {
-  if (!data.uid && !data.isPinned)
+  if (!data)
     throw new Error(
       "Unable to open window. Window ID or window pinned status was not provided",
     );
-  uid = data.uid.toString();
+  uid = data.uid;
   btnPin.className = data.isPinned ? "btn btn-pin-active" : "btn";
 });
 
 window.electron.ipcOn("render:titlebar-update-btnSettings", (e, data) => {
-  if (!data.isVisible)
+  if (!data)
     throw new Error(
       "Unable to open window. Window visibility status was not provided",
     );
@@ -26,7 +26,7 @@ window.electron.ipcOn("render:titlebar-update-btnSettings", (e, data) => {
 });
 
 window.electron.ipcOn("render:window-update-btnPin", (e, data) => {
-  if (!data.isPinned)
+  if (!data)
     throw new Error(
       "Unable to open window. Window pinned status was not provided",
     );

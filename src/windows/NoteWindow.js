@@ -20,7 +20,7 @@ class NoteWindow {
       minHeight: 350,
       x: opts.x - 320,
       y: opts.y + 50,
-      alwaysOnTop: opts.isPinned,
+      alwaysOnTop: opts.isPinned.value,
       fullscreenable: false,
       transparent: false,
       frame: false,
@@ -48,7 +48,7 @@ class NoteWindow {
       this._window.focus();
       this._window.webContents.send("window:ready", {
         uid: this.uid,
-        isPinned: opts.isPinned,
+        isPinned: opts.isPinned.value,
       });
     });
   }
@@ -71,7 +71,6 @@ class NoteWindow {
   }
 
   toggleTitlebarSettingsButton(isVisible) {
-    if (!isVisible) throw new Error("Window visibility state was not provided");
     this._window.webContents.send("render:titlebar-update-btnSettings", {
       isVisible,
     });

@@ -69,7 +69,7 @@ if (app.requestSingleInstanceLock())
         });
 
         ipcMain.on("window:pin", (e, data) => {
-          if (!data.uid)
+          if (!data)
             throw new Error("Unable to pin window. Window ID was not provided");
           this.notes.find((note) => {
             if (note.uid === data.uid) note.togglePin();
@@ -77,7 +77,7 @@ if (app.requestSingleInstanceLock())
         });
 
         ipcMain.on("window:toggle-settings", (e, data) => {
-          if (!data.uid && !data.isVisible)
+          if (!data)
             throw new Error(
               "Unable to open settings. Window ID or window visibility status was not provided",
             );
