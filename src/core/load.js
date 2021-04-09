@@ -44,9 +44,6 @@ const asset = (name, ext) => {
   return resolve(_base, "assets", `${name}.${ext}`);
 };
 
-const script = (name) => {
-  if (!name) throw new Error("Script file name not provided");
-  return resolve(_base, "scripts", `${name}.js`);
-};
+const preload = resolve(_base, "src", "preload.js");
 
-module.exports = { view, icon, asset, script };
+module.exports = { view, icon, asset, preload };

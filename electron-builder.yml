@@ -3,15 +3,15 @@ appId: "com.stickynote.app"
 asar: true
 extends: null
 win:
-  icon: "public/icons/icon.ico"
+  icon: "icons/icon.ico"
   target:
     - nsis
 nsis:
   oneClick: false
   perMachine: false
   allowToChangeInstallationDirectory: true
-  installerIcon: "public/icons/install.ico"
-  uninstallerIcon: "public/icons/uninstall.ico"
+  installerIcon: "icons/install.ico"
+  uninstallerIcon: "icons/uninstall.ico"
   license: "LICENSE"
   deleteAppDataOnUninstall: true
   runAfterFinish: false
@@ -22,7 +22,7 @@ nsis:
 linux:
   target: [AppImage]
   executableName: "StickyNote"
-  icon: "public/icons/icon.icns"
+  icon: "icons/icon.icns"
   maintainer: Kleo Hasani
   category: "Utility"
 deb:

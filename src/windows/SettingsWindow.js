@@ -1,7 +1,7 @@
 "use strict";
 
 const { BrowserWindow, ipcMain } = require("electron");
-const { view, icon, script } = require("../core/load");
+const { view, icon, preload } = require("../core/load");
 
 class SettingsWindow {
   /**
@@ -26,7 +26,7 @@ class SettingsWindow {
       parent: this.parent,
       modal: isModal,
       webPreferences: {
-        preload: script("preload"),
+        preload: preload,
         webSecurity: true,
         contextIsolation: true,
         worldSafeExecuteJavaScript: true,

@@ -1,7 +1,7 @@
 "use strict";
 
 const { BrowserWindow } = require("electron");
-const { view, icon, script } = require("../core/load");
+const { view, icon, preload } = require("../core/load");
 const { SettingsWindow } = require("./SettingsWindow");
 
 class NoteWindow {
@@ -27,7 +27,7 @@ class NoteWindow {
       show: false,
       icon: icon(),
       webPreferences: {
-        preload: script("preload"),
+        preload: preload,
         spellcheck: true,
         webSecurity: true,
         contextIsolation: true,

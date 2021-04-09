@@ -7,6 +7,8 @@ const btnClose = document.querySelector("#btn-close");
 
 // electron API listeners
 window.electron.ipcOnce("window:ready", (e, data) => {
+  if (!data)
+    throw new Error("Unable to open window. Window data was not provided");
   init_settings = data.settings;
 });
 

@@ -7,12 +7,18 @@ const btnPin = document.querySelector("#btn-pin");
 const btnSettings = document.querySelector("#btn-settings");
 const btnClose = document.querySelector("#btn-close");
 
+const txtArea = document.querySelector("#txt-area");
+
+const btnItalic = document.querySelector("#btn-italic");
+const btnBold = document.querySelector("#btn-bold");
+const btnUnderline = document.querySelector("#btn-underline");
+const btnStrike = document.querySelector("#btn-strike");
+const btnList = document.querySelector("#btn-list");
+
 // electron API listeners
 window.electron.ipcOnce("window:ready", (e, data) => {
   if (!data)
-    throw new Error(
-      "Unable to open window. Window ID or window pinned status was not provided",
-    );
+    throw new Error("Unable to open window. Window data was not provided");
   uid = data.uid;
   btnPin.className = data.isPinned ? "btn btn-pin-active" : "btn";
 });
@@ -49,3 +55,9 @@ btnSettings.onclick = () => {
 btnClose.onclick = () => {
   window.close();
 };
+
+btnItalic.onclick = () => {};
+btnBold.onclick = () => {};
+btnUnderline.onclick = () => {};
+btnStrike.onclick = () => {};
+btnList.onclick = () => {};

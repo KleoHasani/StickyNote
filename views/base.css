@@ -34,7 +34,7 @@ body {
 
 .titlebar {
   width: inherit;
-  height: 2.5em;
+  height: 3em;
   display: flex;
   flex-direction: row;
   align-items: center;
