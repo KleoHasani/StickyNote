@@ -15,10 +15,6 @@ if (app.requestSingleInstanceLock())
           key: "isPinned",
           value: true,
         },
-        {
-          key: "maxNotes",
-          value: 10,
-        },
       ],
     );
     this.store = new Storage(resolve(app.getPath("userData"), "store.json"));
@@ -86,6 +82,15 @@ if (app.requestSingleInstanceLock())
               note.spawnSettingsChildWindow();
             note.toggleTitlebarSettingsButton(data.isVisible);
           });
+        });
+
+        ipcMain.on("window:close", (e, data) => {
+          if (!data)
+            throw new Error(
+              "Unable to close window. Window ID was not provided",
+            );
+          this.notes = this.notes.filter((note) => note.uid !== data.uid);
+          e.reply("window:closed");
         });
       })
       // errors

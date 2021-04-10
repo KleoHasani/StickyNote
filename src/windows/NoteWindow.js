@@ -2,7 +2,6 @@
 
 const { BrowserWindow } = require("electron");
 const { view, icon, preload } = require("../core/load");
-const { SettingsWindow } = require("./SettingsWindow");
 
 class NoteWindow {
   /**
@@ -53,26 +52,11 @@ class NoteWindow {
     });
   }
 
-  close() {
-    this._window.close();
-  }
-
   togglePin() {
     const isPinned = !this._window.isAlwaysOnTop();
     this._window.setAlwaysOnTop(isPinned);
     this._window.webContents.send("render:window-update-btnPin", {
       isPinned,
-    });
-  }
-
-  spawnSettingsChildWindow() {
-    const _child = new SettingsWindow(this, true);
-    return _child;
-  }
-
-  toggleTitlebarSettingsButton(isVisible) {
-    this._window.webContents.send("render:titlebar-update-btnSettings", {
-      isVisible,
     });
   }
 }
