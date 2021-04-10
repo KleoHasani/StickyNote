@@ -44,6 +44,7 @@ window.electron.ipcOn("render:window-update-btnPin", (e, data) => {
  * @param {string} value
  */
 function format(cmd, value = null) {
+  if (!cmd) throw new Error("No command passed");
   document.execCommand(cmd, false, value);
 }
 
