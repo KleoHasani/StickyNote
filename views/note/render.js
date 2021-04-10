@@ -39,7 +39,22 @@ window.electron.ipcOn("render:window-update-btnPin", (e, data) => {
   btnPin.className = data.isPinned ? "btn btn-pin-active" : "btn";
 });
 
+/**
+ * @param {string} cmd
+ * @param {string} value
+ */
+function format(cmd, value = null) {
+  document.execCommand(cmd, false, value);
+}
+
 // render listeners
+txtArea.onkeydown = (e) => {
+  if (e.keyCode === 9) {
+    e.preventDefault();
+    format("insertHTML", "&emsp;");
+  }
+};
+
 btnNew.onclick = () => {
   window.electron.ipcSend("window:new");
 };
@@ -56,8 +71,22 @@ btnClose.onclick = () => {
   window.close();
 };
 
-btnItalic.onclick = () => {};
-btnBold.onclick = () => {};
-btnUnderline.onclick = () => {};
-btnStrike.onclick = () => {};
-btnList.onclick = () => {};
+btnItalic.onclick = () => {
+  format("italic");
+};
+
+btnBold.onclick = () => {
+  format("bold");
+};
+
+btnUnderline.onclick = () => {
+  format("underline");
+};
+
+btnStrike.onclick = () => {
+  format("strikethrough");
+};
+
+btnList.onclick = () => {
+  format("insertorderedlist");
+};
