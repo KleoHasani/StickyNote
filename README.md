@@ -5,8 +5,6 @@ A sticky notes app.
 ---
 
 <p align="center">
-<img src="/screenshots/screenshot1.png"/>
-<img src="/screenshots/screenshot2.png"/>
 </p>
 
 ---
