@@ -6,10 +6,7 @@ const btnNew = document.querySelector("#btn-new");
 const btnPin = document.querySelector("#btn-pin");
 const btnClose = document.querySelector("#btn-close");
 const txtArea = document.querySelector("#txt-area");
-const btnItalic = document.querySelector("#btn-italic");
-const btnBold = document.querySelector("#btn-bold");
-const btnUnderline = document.querySelector("#btn-underline");
-const btnStrike = document.querySelector("#btn-strike");
+const btnCheck = document.querySelector("#btn-check");
 const btnList = document.querySelector("#btn-list");
 
 /**
@@ -55,20 +52,11 @@ btnClose.onclick = () => {
   window.electron.ipcSend("window:close", { uid });
 };
 
-btnItalic.onclick = () => {
-  format("italic");
-};
-
-btnBold.onclick = () => {
-  format("bold");
-};
-
-btnUnderline.onclick = () => {
-  format("underline");
-};
-
-btnStrike.onclick = () => {
+btnCheck.onclick = () => {
   format("strikethrough");
+  btnCheck.classList = btnCheck.classList.contains("active")
+    ? "btn-style"
+    : "btn-style active";
 };
 
 btnList.onclick = () => {
