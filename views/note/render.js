@@ -54,9 +54,7 @@ btnClose.onclick = () => {
 
 btnCheck.onclick = () => {
   format("strikethrough");
-  btnCheck.classList = btnCheck.classList.contains("active")
-    ? "btn-style"
-    : "btn-style active";
+  btnCheck.classList = "btn-style active";
 };
 
 btnList.onclick = () => {
@@ -64,8 +62,24 @@ btnList.onclick = () => {
 };
 
 txtArea.onkeydown = (e) => {
-  if (e.keyCode === 9) {
+  if (e.which === 9) {
     e.preventDefault();
     format("insertHTML", "&emsp;");
   }
+
+  if (e.which > 36 && e.which < 41) {
+    const node = document.getSelection().anchorNode.parentNode;
+    if (node.nodeName === "STRIKE")
+      if (btnCheck.classList.contains("active")) return;
+      else btnCheck.classList = "btn-style active";
+    else btnCheck.classList = "btn-style";
+  }
+};
+
+txtArea.onselectstart = (e) => {
+  const node = e.target.parentNode;
+  if (node.nodeName === "STRIKE")
+    if (btnCheck.classList.contains("active")) return;
+    else btnCheck.classList = "btn-style active";
+  else btnCheck.classList = "btn-style";
 };
