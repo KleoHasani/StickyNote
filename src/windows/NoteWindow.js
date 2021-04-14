@@ -9,9 +9,11 @@ class NoteWindow {
    * @param {number} opts.x
    * @param {number} opts.y
    * @param {boolean} opts.isPinned
+   * @param {string} body
    */
-  constructor(uid, opts = { x, y, isPinned }) {
+  constructor(uid, opts = { x, y, isPinned }, body = "") {
     this.uid = uid;
+
     this._window = new BrowserWindow({
       width: 300,
       height: 350,
@@ -19,7 +21,7 @@ class NoteWindow {
       minHeight: 350,
       x: opts.x - 320,
       y: opts.y + 50,
-      alwaysOnTop: opts.isPinned.value,
+      alwaysOnTop: opts.isPinned,
       fullscreenable: false,
       transparent: false,
       frame: false,
@@ -47,7 +49,8 @@ class NoteWindow {
       this._window.focus();
       this._window.webContents.send("window:ready", {
         uid: this.uid,
-        isPinned: opts.isPinned.value,
+        isPinned: opts.isPinned,
+        body,
       });
     });
   }

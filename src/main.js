@@ -38,18 +38,22 @@ if (app.requestSingleInstanceLock())
           // Render all sticky notes from store
           for (let item of this.store.items)
             this.notes.push(
-              new NoteWindow(uid(), {
-                x: screen_width,
-                y: 0,
-                isPinned: item.value.isPinned,
-              }),
+              new NoteWindow(
+                item.key,
+                {
+                  x: screen_width,
+                  y: 0,
+                  isPinned: item.value.isPinned,
+                },
+                item.value.body,
+              ),
             );
         else
           this.notes.push(
             new NoteWindow(uid(), {
               x: screen_width,
               y: 0,
-              isPinned: this.settings.getItem("isPinned"),
+              isPinned: this.settings.getItem("isPinned").value,
             }),
           );
 
@@ -65,41 +69,47 @@ if (app.requestSingleInstanceLock())
         });
 
         ipcMain.on("window:pin", (e, data) => {
+          const { uid } = data;
           if (!data)
             throw new Error("Unable to pin window. Window ID was not provided");
           this.notes.find((note) => {
-            if (note.uid === data.uid) note.togglePin();
+            if (note.uid === uid) note.togglePin();
           });
         });
 
         ipcMain.on("window:toggle-settings", (e, data) => {
+          const { uid, isVisible } = data;
           if (!data)
             throw new Error(
               "Unable to open settings. Window ID or window visibility status was not provided",
             );
           this.notes.forEach((note) => {
-            if (note.uid && note.uid === data.uid)
-              note.spawnSettingsChildWindow();
-            note.toggleTitlebarSettingsButton(data.isVisible);
+            if (note.uid && note.uid === uid) note.spawnSettingsChildWindow();
+            note.toggleTitlebarSettingsButton(isVisible);
           });
         });
 
-        ipcMain.on("window:close", (e, data) => {
+        ipcMain.on("window:close", async (e, data) => {
+          const { uid, isPinned, body } = data;
           if (!data)
             throw new Error(
               "Unable to close window. Window ID was not provided",
             );
-          this.notes = this.notes.filter((note) => note.uid !== data.uid);
+          if (body !== "")
+            this.store.setItem({
+              key: uid,
+              value: {
+                isPinned: isPinned,
+                body: body,
+              },
+            });
+          await this.store.save();
+          this.notes = this.notes.filter((note) => note.uid !== uid);
           e.reply("window:closed");
         });
       })
       // errors
       .catch((err) => console.error(err));
-
-    // Clean-up
-    app.once("before-quit", async () => {
-      await this.store.save();
-    });
 
     // Quit when all windows are closed
     app.once("window-all-closed", () => app.quit());

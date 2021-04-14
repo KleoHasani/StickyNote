@@ -1,6 +1,6 @@
 "use strict";
 
-let uid;
+let _uid;
 
 const btnNew = document.querySelector("#btn-new");
 const btnPin = document.querySelector("#btn-pin");
@@ -21,10 +21,12 @@ function format(cmd, value = null) {
 
 // electron API listeners
 window.electron.ipcOnce("window:ready", (e, data) => {
+  const { uid, isPinned, body } = data;
   if (!data)
     throw new Error("Unable to open window. Window data was not provided");
-  uid = data.uid;
-  btnPin.className = data.isPinned ? "btn btn-pin-active" : "btn";
+  _uid = uid;
+  btnPin.className = isPinned ? "btn btn-pin-active" : "btn";
+  txtArea.innerHTML = body;
 });
 
 window.electron.ipcOnce("window:closed", () => {
@@ -32,11 +34,12 @@ window.electron.ipcOnce("window:closed", () => {
 });
 
 window.electron.ipcOn("render:window-update-btnPin", (e, data) => {
+  const { isPinned } = data;
   if (!data)
     throw new Error(
       "Unable to open window. Window pinned status was not provided",
     );
-  btnPin.className = data.isPinned ? "btn btn-pin-active" : "btn";
+  btnPin.className = isPinned ? "btn btn-pin-active" : "btn";
 });
 
 // render listeners
@@ -45,15 +48,20 @@ btnNew.onclick = () => {
 };
 
 btnPin.onclick = () => {
-  window.electron.ipcSend("window:pin", { uid });
+  window.electron.ipcSend("window:pin", { _uid });
 };
 
 btnClose.onclick = () => {
-  window.electron.ipcSend("window:close", { uid });
+  window.electron.ipcSend("window:close", {
+    _uid,
+    isPinned: btnPin.classList.contains("btn-pin-active"),
+    body: txtArea.innerHTML,
+  });
 };
 
 btnCheck.onclick = () => {
   format("strikethrough");
+  document.getSelection().collapseToEnd();
   btnCheck.classList = "btn-style active";
 };
 
