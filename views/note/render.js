@@ -30,6 +30,7 @@ window.electron.ipcOnce("window:ready", (e, data) => {
 });
 
 window.electron.ipcOnce("window:closed", () => {
+  window.electron.ipcRemoveAllListeners();
   window.close();
 });
 
