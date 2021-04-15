@@ -1,0 +1,49 @@
+body {
+  justify-content: space-between;
+  overflow: none;
+}
+
+.textarea {
+  width: auto;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  margin: 0.2em;
+  background: transparent;
+  overflow-y: auto;
+}
+
+.btn-style-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.btn-style {
+  height: 2em;
+  width: 100%;
+  font-size: 1em;
+  margin: 0.2em;
+  border-radius: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.btn-style:hover {
+  background: var(--secondary);
+  color: var(--onSecondary);
+}
+
+.btn-style:active {
+  opacity: 0.6;
+}
+
+.active {
+  background: var(--primary);
+  color: var(--onPrimary);
+}

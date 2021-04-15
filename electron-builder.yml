@@ -3,15 +3,15 @@ appId: "com.stickynote.app"
 asar: true
 extends: null
 win:
-  icon: "static/icons/win/icon.ico"
+  icon: "icons/icon.ico"
   target:
     - nsis
 nsis:
   oneClick: false
   perMachine: false
   allowToChangeInstallationDirectory: true
-  installerIcon: "static/icons/win/install.ico"
-  uninstallerIcon: "static/icons/win/uninstall.ico"
+  installerIcon: "icons/install.ico"
+  uninstallerIcon: "icons/uninstall.ico"
   license: "LICENSE"
   deleteAppDataOnUninstall: true
   runAfterFinish: false
@@ -20,9 +20,9 @@ nsis:
   shortcutName: "StickyNote"
 
 linux:
-  target: [deb, AppImage]
+  target: [AppImage]
   executableName: "StickyNote"
-  icon: "static/icons/mac/icon.icns"
+  icon: "icons/icon.icns"
   maintainer: Kleo Hasani
   category: "Utility"
 deb:
@@ -36,6 +36,6 @@ deb:
       "libnss3",
     ]
 
-files: ["!node_modules", "!__tests__", "!__mocks__", "!README.md"]
+files: ["!node_modules", "!screenshots", "!README.md", "!LICENSE"]
 directories:
   output: "dist"
