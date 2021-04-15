@@ -8,15 +8,6 @@ const { NoteWindow } = require("./windows/NoteWindow");
 
 if (app.requestSingleInstanceLock())
   (() => {
-    this.settings = new Storage(
-      resolve(app.getPath("userData"), "settings.json"),
-      [
-        {
-          key: "isPinned",
-          value: true,
-        },
-      ],
-    );
     this.store = new Storage(resolve(app.getPath("userData"), "store.json"));
     this.notes = [];
 
@@ -24,15 +15,12 @@ if (app.requestSingleInstanceLock())
       .whenReady()
       // Async operations
       .then(async () => {
-        await this.settings.load();
         await this.store.load();
       })
       // Init and Listeners
       .then(() => {
         // Get primary screen width to determine position of Sticky Note
         const screen_width = screen.getPrimaryDisplay().size.width;
-
-        globalThis.settings = Array.from(this.settings.items);
 
         if (this.store.length > 0)
           // Render all sticky notes from store
@@ -53,7 +41,7 @@ if (app.requestSingleInstanceLock())
             new NoteWindow(uid(), {
               x: screen_width,
               y: 0,
-              isPinned: this.settings.getItem("isPinned").value,
+              isPinned: true,
             }),
           );
 
@@ -63,7 +51,7 @@ if (app.requestSingleInstanceLock())
             new NoteWindow(uid(), {
               x: screen_width,
               y: 0,
-              isPinned: this.settings.getItem("isPinned"),
+              isPinned: true,
             }),
           );
         });
@@ -74,18 +62,6 @@ if (app.requestSingleInstanceLock())
             throw new Error("Unable to pin window. Window ID was not provided");
           this.notes.find((note) => {
             if (note.uid === uid) note.togglePin();
-          });
-        });
-
-        ipcMain.on("window:toggle-settings", (e, data) => {
-          const { uid, isVisible } = data;
-          if (!data)
-            throw new Error(
-              "Unable to open settings. Window ID or window visibility status was not provided",
-            );
-          this.notes.forEach((note) => {
-            if (note.uid && note.uid === uid) note.spawnSettingsChildWindow();
-            note.toggleTitlebarSettingsButton(isVisible);
           });
         });
 
