@@ -59,12 +59,4 @@ txtArea.onkeydown = (e) => {
 		e.preventDefault();
 		format("insertHTML", "&emsp;");
 	}
-
-	// if (e.which > 36 && e.which < 41) {
-	//   const node = document.getSelection().anchorNode.parentNode;
-	//   if (node.nodeName === "STRIKE")
-	//     if (btnCheck.classList.contains("active")) return;
-	//     else btnCheck.classList = "btn-style active";
-	//   else btnCheck.classList = "btn-style";
-	// }
 };
