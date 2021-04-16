@@ -5,6 +5,7 @@ A sticky notes app.
 ---
 
 <p align="center">
+	<img src="./docs/screenshots/Screenshot1.png">
 </p>
 
 ---
@@ -31,17 +32,17 @@ npm start
 
 ### Required
 
-- Electron v9.1.2
+-   Electron v9.1.2
 
-- Electron Builder v22.9.1
+-   Electron Builder v22.9.1
 
-- Node v12.19.0
+-   Node v12.19.0
 
-- NPM v6.14.7
+-   NPM v6.14.7
 
 ### Build With
 
-- Electron Builder v22.9.1
+-   Electron Builder v22.9.1
 
 Build:
 
@@ -51,13 +52,13 @@ npm run dist
 
 Windows:
 
-- dist/_installer_.exe
+-   dist/_installer_.exe
 
 Debian:
 
-- dist/_installer_.deb
+-   dist/_installer_.deb
 
-- dist/_installer_.AppImage
+-   dist/_installer_.AppImage
 
 ## Version
 
@@ -71,8 +72,8 @@ Kleo Hasani
 
 Support for:
 
-- [x] Windows 10
+-   [x] Windows 10
 
-- [x] Debian 10
+-   [x] Debian 10
 
-- [x] AppImage
+-   [x] AppImage
