@@ -21,8 +21,8 @@ if (app.requestSingleInstanceLock())
 				// Get primary screen width to determine position of Sticky Note
 				const screen_width = screen.getPrimaryDisplay().size.width;
 
+				// Render notes
 				if (this.store.length > 0)
-					// Render all sticky notes from store
 					for (let item of this.store.items)
 						this.notes.push(
 							new NoteWindow(
@@ -30,9 +30,8 @@ if (app.requestSingleInstanceLock())
 								{
 									x: screen_width,
 									y: 0,
-									isPinned: item.value.isPinned,
 								},
-								item.value.body
+								item.value
 							)
 						);
 				else
@@ -40,42 +39,31 @@ if (app.requestSingleInstanceLock())
 						new NoteWindow(uid(), {
 							x: screen_width,
 							y: 0,
-							isPinned: true,
 						})
 					);
 
 				// Listeners
+				// New window
 				ipcMain.on("window:new", () => {
 					this.notes.push(
 						new NoteWindow(uid(), {
 							x: screen_width,
 							y: 0,
-							isPinned: true,
 						})
 					);
 				});
 
-				ipcMain.on("window:pin", (e, data) => {
-					const { uid } = data;
-					if (!data) throw new Error("Unable to pin window. Window ID was not provided");
-					this.notes.find((note) => {
-						if (note.uid === uid) note.togglePin();
-					});
-				});
-
+				// Close window
 				ipcMain.on("window:close", async (e, data) => {
-					const { uid, isPinned, body } = data;
+					const { key, value } = data;
 					if (!data) throw new Error("Unable to close window. Window ID was not provided");
 
 					this.store.setItem({
-						key: uid,
-						value: {
-							isPinned: isPinned,
-							body: body,
-						},
+						key: key,
+						value: value,
 					});
 					await this.store.save();
-					this.notes = this.notes.filter((note) => note.uid !== uid);
+					this.notes = this.notes.filter((note) => note.uid !== key);
 					e.reply("window:closed");
 				});
 			})
