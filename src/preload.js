@@ -9,8 +9,6 @@ const ALLOWED_CHANNELS = [
 	"window:close",
 	"window:closing",
 	"window:closed",
-	"render:window-update-btnPin",
-	"action:store",
 ];
 
 contextBridge.exposeInMainWorld("electron", {

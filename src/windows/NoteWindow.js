@@ -1,6 +1,6 @@
 "use strict";
 
-const { BrowserWindow, ipcMain } = require("electron");
+const { BrowserWindow } = require("electron");
 const { view, icon, preload } = require("../core/load");
 
 class NoteWindow {
