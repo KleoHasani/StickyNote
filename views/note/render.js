@@ -3,6 +3,8 @@
 let _uid;
 
 const txtArea = document.querySelector("#txt-area");
+const btnList = document.querySelector("#button-list");
+const btnStrike = document.querySelector("#button-strike");
 
 /**
  * @param {string} cmd
@@ -37,4 +39,12 @@ txtArea.onkeydown = (e) => {
 		e.preventDefault();
 		format("insertHTML", "&emsp;");
 	}
+};
+
+btnList.onclick = () => {
+	format("insertOrderedList");
+};
+
+btnStrike.onclick = () => {
+	format("strikeThrough");
 };

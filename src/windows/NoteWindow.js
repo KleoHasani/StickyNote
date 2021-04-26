@@ -41,6 +41,8 @@ class NoteWindow {
 
 		this._window.loadFile(view("note"));
 
+		this._window.setMenu(null);
+
 		this._window.once("ready-to-show", () => {
 			this._window.show();
 			this._window.focus();

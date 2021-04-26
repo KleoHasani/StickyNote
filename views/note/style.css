@@ -13,3 +13,30 @@ body {
 	background: transparent;
 	overflow-y: auto;
 }
+
+.buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0.2em;
+}
+
+.buttons > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2em;
+	height: 2em;
+	color: var(--secondary);
+	border: 1px solid var(--primary);
+	border-radius: 0.5em;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+.buttons > div:hover {
+	background: var(--primary);
+	color: var(--onPrimary);
+}

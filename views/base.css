@@ -1,33 +1,29 @@
 :root {
-  --primary: #29b6f6;
-  --secondary: #00838f;
-  --background: #ecf0f1;
-  --onPrimary: #ecf0f1;
-  --onSecondary: #ecf0f1;
-  --onBackground: #000000;
-  --danger: #e74c3c;
-  --warning: #f39c12;
-  --ok: #2ecc71;
-  --onDanger: #ecf0f1;
-  --onWarning: #ecf0f1;
-  --onOk: #ecf0f1;
-}
-
-* {
-  padding:  0em;
-  margin: 0em;
+	--primary: #29b6f6;
+	--secondary: #00838f;
+	--background: #ecf0f1;
+	--onPrimary: #ecf0f1;
+	--onSecondary: #ecf0f1;
+	--onBackground: #000000;
+	--danger: #e74c3c;
+	--warning: #f39c12;
+	--ok: #2ecc71;
+	--onDanger: #ecf0f1;
+	--onWarning: #ecf0f1;
+	--onOk: #ecf0f1;
 }
 
 body {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--background);
-  color: var(--onBackground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	padding: 0em;
+	margin: 0em;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: var(--background);
+	color: var(--onBackground);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+		"Droid Sans", "Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
