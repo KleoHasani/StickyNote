@@ -13,9 +13,9 @@ class NoteWindow {
 	constructor(uid, opts = { x, y }, body = "") {
 		this._window = new BrowserWindow({
 			width: 300,
-			height: 350,
+			height: 300,
 			minWidth: 300,
-			minHeight: 350,
+			minHeight: 300,
 			x: opts.x - 320,
 			y: opts.y + 50,
 			alwaysOnTop: opts.isPinned,
@@ -55,14 +55,6 @@ class NoteWindow {
 		this._window.once("close", (e) => {
 			e.preventDefault();
 			this._window.webContents.send("window:closing");
-		});
-	}
-
-	togglePin() {
-		const isPinned = !this._window.isAlwaysOnTop();
-		this._window.setAlwaysOnTop(isPinned);
-		this._window.webContents.send("render:window-update-btnPin", {
-			isPinned,
 		});
 	}
 }

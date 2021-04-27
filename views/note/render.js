@@ -3,6 +3,7 @@
 let _uid;
 
 const txtArea = document.querySelector("#txt-area");
+const btnNew = document.querySelector("#button-new");
 const btnList = document.querySelector("#button-list");
 const btnStrike = document.querySelector("#button-strike");
 
@@ -61,6 +62,11 @@ txtArea.onkeyup = (e) => {
 // Toggle formated button active on select or cursor position set on mouse click
 txtArea.onclick = () => {
 	toggleIsActive(document.queryCommandState("strikethrough"), btnStrike);
+};
+
+// Create new note
+btnNew.onclick = () => {
+	window.electron.ipcSend("window:new");
 };
 
 // Insert List
