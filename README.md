@@ -6,6 +6,7 @@ A sticky notes app.
 
 <p align="center">
 	<img src="./docs/screenshots/Screenshot1.png">
+	<img src="./docs/screenshots/Screenshot2.png">
 </p>
 
 ---
