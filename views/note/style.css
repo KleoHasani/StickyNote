@@ -40,3 +40,8 @@ body {
 	background: var(--primary);
 	color: var(--onPrimary);
 }
+
+.active {
+	background: var(--secondary);
+	color: var(--onSecondary) !important;
+}
