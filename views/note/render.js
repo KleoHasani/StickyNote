@@ -27,7 +27,7 @@ function toggleIsActive(isActive, element) {
 	element.classList = isActive ? "active" : "";
 }
 
-// electron API listeners
+// Electron API listeners
 window.electron.ipcOnce("window:ready", (e, data) => {
 	const { uid, body } = data;
 	if (!data) throw new Error("Unable to open window. Window data was not provided");
@@ -35,17 +35,23 @@ window.electron.ipcOnce("window:ready", (e, data) => {
 	txtArea.innerHTML = body;
 });
 
+// Emit closing event
 window.electron.ipcOnce("window:closing", () => {
 	window.electron.ipcSend("window:close", { key: _uid, value: txtArea.innerHTML });
 });
 
+// Close window and clean up
 window.electron.ipcOnce("window:closed", () => {
 	window.electron.ipcRemoveAllListeners();
 	window.close();
 });
 
-// render listeners
+// Save on focus lost
+window.onblur = (e) => {
+	window.electron.ipcSend("window:save", { key: _uid, value: txtArea.innerHTML });
+};
 
+// Renderer listeners
 // Insert Tab on tab button press
 txtArea.onkeydown = (e) => {
 	if (e.which === 9) {

@@ -53,6 +53,21 @@ if (app.requestSingleInstanceLock())
 					);
 				});
 
+				// Save on window looses focus
+				ipcMain.on("window:save", async (e, data) => {
+					const { key, value } = data;
+					if (!data) throw new Error("Unable to close window. Window ID was not provided");
+
+					if (value === "") this.store.removeItem(key);
+					else
+						this.store.setItem({
+							key: key,
+							value: value,
+						});
+
+					await this.store.save();
+				});
+
 				// Close window
 				ipcMain.on("window:close", async (e, data) => {
 					const { key, value } = data;

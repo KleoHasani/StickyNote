@@ -4,8 +4,8 @@ const { contextBridge, ipcRenderer } = require("electron");
 
 const ALLOWED_CHANNELS = [
 	"window:new",
+	"window:save",
 	"window:ready",
-	"window:pin",
 	"window:close",
 	"window:closing",
 	"window:closed",
