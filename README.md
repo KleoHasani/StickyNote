@@ -48,7 +48,7 @@ npm start
 Build:
 
 ```npm
-npm run dist
+npm run build
 ```
 
 Windows:
