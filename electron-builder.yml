@@ -3,39 +3,31 @@ appId: "com.stickynote.app"
 asar: true
 extends: null
 win:
-  icon: "icons/icon.ico"
-  target:
-    - nsis
+    icon: "icons/icon.ico"
+    target:
+        - nsis
 nsis:
-  oneClick: false
-  perMachine: false
-  allowToChangeInstallationDirectory: true
-  installerIcon: "icons/install.ico"
-  uninstallerIcon: "icons/uninstall.ico"
-  license: "LICENSE"
-  deleteAppDataOnUninstall: true
-  runAfterFinish: false
-  createDesktopShortcut: false
-  createStartMenuShortcut: true
-  shortcutName: "StickyNote"
+    oneClick: false
+    perMachine: false
+    allowToChangeInstallationDirectory: true
+    installerIcon: "icons/install.ico"
+    uninstallerIcon: "icons/uninstall.ico"
+    license: "LICENSE"
+    deleteAppDataOnUninstall: true
+    runAfterFinish: false
+    createDesktopShortcut: false
+    createStartMenuShortcut: true
+    shortcutName: "StickyNote"
 
 linux:
-  target: [AppImage]
-  executableName: "StickyNote"
-  icon: "icons/icon.icns"
-  maintainer: Kleo Hasani
-  category: "Utility"
+    target: [AppImage, deb]
+    executableName: "StickyNote"
+    icon: "icons/icon.icns"
+    maintainer: Kleo Hasani
+    category: "Utility"
 deb:
-  depends:
-    [
-      "gconf2",
-      "gconf-service",
-      "libnotify4",
-      "libappindicator1",
-      "libxtst6",
-      "libnss3",
-    ]
+    depends: ["gconf2", "gconf-service", "libnotify4", "libappindicator1", "libxtst6", "libnss3"]
 
 files: ["!node_modules", "!screenshots", "!README.md", "!LICENSE"]
 directories:
-  output: "dist"
+    output: "dist"

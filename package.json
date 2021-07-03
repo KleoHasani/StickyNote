@@ -1,7 +1,7 @@
 {
 	"name": "stickynote",
 	"displayName": "StickyNote",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "A sticky notes app.",
 	"homepage": ".",
 	"author": "Kleo Hasani",
@@ -15,8 +15,8 @@
 		"test": "jest"
 	},
 	"devDependencies": {
-		"electron": "^12.0.0",
-		"electron-builder": "^22.9.1",
+		"electron": "^13.1.5",
+		"electron-builder": "^22.11.7",
 		"jest": "^26.6.3",
 		"spectron": "^13.0.0"
 	}

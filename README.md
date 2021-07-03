@@ -33,13 +33,13 @@ npm start
 
 ### Required
 
--   Electron v9.1.2
+-   Electron v13.1.5
 
--   Electron Builder v22.9.1
+-   Electron Builder v22.11.7
 
--   Node v12.19.0
+-   Node v16.3.0
 
--   NPM v6.14.7
+-   NPM v7.15.1
 
 ### Build With
 
