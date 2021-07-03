@@ -1,3 +1,7 @@
+<p align="center">
+	<img src="./docs/screenshots/logo.png">
+</p>
+
 # StickyNote
 
 A sticky notes app.
