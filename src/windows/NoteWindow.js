@@ -19,7 +19,7 @@ class NoteWindow {
 			x: opts.x - 320,
 			y: opts.y + 50,
 			alwaysOnTop: opts.isPinned,
-			fullscreenable: false,
+			fullscreenable: true,
 			transparent: false,
 			show: false,
 			icon: icon(),
