@@ -19,6 +19,12 @@ nsis:
     createStartMenuShortcut: true
     shortcutName: "StickyNote"
 
+mac:
+    category: "public.app-category.utilities"
+    target: "dmg"
+    icon: "icons/icon.icns"
+
+
 linux:
     target: [AppImage, deb]
     executableName: "StickyNote"
