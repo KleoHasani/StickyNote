@@ -49,6 +49,16 @@ header {
 	color: var(--onPrimary);
 }
 
+#button-delete {
+	border: 1px solid var(--danger);
+	color: var(--danger);
+}
+
+#button-delete:hover {
+	background: var(--danger);
+	color: var(--onDanger);
+}
+
 .active {
 	background: var(--secondary);
 	color: var(--onSecondary) !important;

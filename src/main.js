@@ -73,7 +73,7 @@ if (app.requestSingleInstanceLock())
 					const { key, value } = data;
 					if (!data) throw new Error("Unable to close window. Window ID was not provided");
 
-					if (value === "") this.store.removeItem(key);
+					if (value === "" || value == "<br>") this.store.removeItem(key);
 					else
 						this.store.setItem({
 							key: key,
@@ -81,7 +81,7 @@ if (app.requestSingleInstanceLock())
 						});
 
 					await this.store.save();
-					this.notes = this.notes.filter((note) => note.uid !== key);
+					this.notes = this.notes.filter((note) => note._uid !== key);
 					e.reply("window:closed");
 				});
 			})

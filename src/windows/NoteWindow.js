@@ -11,6 +11,7 @@ class NoteWindow {
 	 * @param {string} body
 	 */
 	constructor(uid, opts = { x, y }, body = "") {
+		this._uid = uid;
 		this._window = new BrowserWindow({
 			width: 300,
 			height: 300,
@@ -47,7 +48,7 @@ class NoteWindow {
 			this._window.show();
 			this._window.focus();
 			this._window.webContents.send("window:ready", {
-				uid,
+				uid: this._uid,
 				body,
 			});
 		});
