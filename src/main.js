@@ -8,20 +8,23 @@ const { NoteWindow } = require("./windows/NoteWindow");
 
 if (app.requestSingleInstanceLock())
 	(() => {
+		// Hold application store in-memmory.
 		this.store = new Storage(resolve(app.getPath("userData"), "store.json"));
+		// Current open windows.
 		this.notes = [];
 
 		app.whenReady()
-			// Async operations
+			// Async operations.
 			.then(async () => {
+				// Load store.
 				await this.store.load();
 			})
-			// Init and Listeners
+			// Init and Listeners.
 			.then(() => {
-				// Get primary screen width to determine position of Sticky Note
+				// Get primary screen width to determine position of Sticky Note.
 				const screen_width = screen.getPrimaryDisplay().size.width;
 
-				// Render notes
+				// Render notes.
 				if (this.store.length > 0)
 					for (let item of this.store.items)
 						this.notes.push(
@@ -42,8 +45,8 @@ if (app.requestSingleInstanceLock())
 						})
 					);
 
-				// Listeners
-				// New window
+				// Listeners.
+				// New window.
 				ipcMain.on("window:new", () => {
 					this.notes.push(
 						new NoteWindow(uid(), {
@@ -53,7 +56,7 @@ if (app.requestSingleInstanceLock())
 					);
 				});
 
-				// Save on window looses focus
+				// Save on window looses focus.
 				ipcMain.on("window:save", async (e, data) => {
 					const { key, value } = data;
 					if (!data) throw new Error("Unable to close window. Window ID was not provided");
@@ -68,7 +71,7 @@ if (app.requestSingleInstanceLock())
 					await this.store.save();
 				});
 
-				// Close window
+				// Close window.
 				ipcMain.on("window:close", async (e, data) => {
 					const { key, value } = data;
 					if (!data) throw new Error("Unable to close window. Window ID was not provided");
@@ -85,10 +88,10 @@ if (app.requestSingleInstanceLock())
 					e.reply("window:closed");
 				});
 			})
-			// errors
+			// errors.
 			.catch((err) => console.error(err));
 
-		// Quit when all windows are closed
+		// Quit when all windows are closed.
 		app.once("window-all-closed", () => app.quit());
 	})();
 else app.exit(0);

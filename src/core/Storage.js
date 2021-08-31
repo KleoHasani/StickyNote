@@ -2,9 +2,11 @@
 
 const { writeFile, readFile, access, chmod, rm } = require("fs/promises");
 
+// File permisions.
 const READ_ONLY = 0o444;
 const READ_WRITE = 0o666;
 
+// Handle data store.
 class Storage {
 	/**
 	 * @param {string} path
@@ -17,7 +19,7 @@ class Storage {
 	}
 
 	/**
-	 * Load JSON into in-memory store
+	 * Load JSON into in-memory store.
 	 * @returns {Promise<void>}
 	 */
 	load() {
@@ -46,19 +48,23 @@ class Storage {
 	}
 
 	/**
-	 * Get length of store
+	 * Get length of store.
 	 * @returns {number}
 	 */
 	get length() {
 		return this._storage.length;
 	}
 
+	/**
+	 * Get items
+	 * @returns {IterableIterator}
+	 */
 	get items() {
 		return this._storage.values();
 	}
 
 	/**
-	 * Set item in memory store
+	 * Set item in memory store.
 	 * @param {object} item
 	 * @param {any} item.key
 	 * @param {any} item.value
@@ -73,7 +79,7 @@ class Storage {
 
 	/**
 	 * Retrieve item by key from in-memory store
-	 * return object or undefined if not found
+	 * return object or undefined if not found.
 	 * @param {any} key
 	 * @returns {object | undefined}
 	 */
@@ -83,7 +89,7 @@ class Storage {
 	}
 
 	/**
-	 * Remove item from in-memory store
+	 * Remove item from in-memory store.
 	 * @param {any} key
 	 * @returns {void}
 	 */
@@ -94,7 +100,7 @@ class Storage {
 	}
 
 	/**
-	 * Clear in-memory store
+	 * Clear in-memory store.
 	 * @returns {void}
 	 */
 	clear() {
@@ -103,7 +109,7 @@ class Storage {
 	}
 
 	/**
-	 * Save in-memory store to JSON file
+	 * Save in-memory store to JSON file.
 	 * @returns {Promise<void> | void}
 	 */
 	save() {
@@ -132,7 +138,7 @@ class Storage {
 	}
 
 	/**
-	 * Delete JSON file
+	 * Delete JSON file.
 	 * @returns {Promise<boolean>}
 	 */
 	delete() {

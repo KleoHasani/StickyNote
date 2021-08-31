@@ -5,6 +5,7 @@ const { view, icon, preload } = require("../core/load");
 
 class NoteWindow {
 	/**
+	 * Create window.
 	 * @param {string} uid
 	 * @param {number} opts.x
 	 * @param {number} opts.y
@@ -40,10 +41,13 @@ class NoteWindow {
 			},
 		});
 
+		// Load HTML for window to render.
 		this._window.loadFile(view("note"));
 
+		// Set window menu to NULL.
 		this._window.setMenu(null);
 
+		// Render when ready.
 		this._window.once("ready-to-show", () => {
 			this._window.show();
 			this._window.focus();
@@ -53,8 +57,10 @@ class NoteWindow {
 			});
 		});
 
+		// Handle close.
 		this._window.once("close", (e) => {
 			e.preventDefault();
+			// Notify renderer window is closing.
 			this._window.webContents.send("window:closing");
 		});
 	}

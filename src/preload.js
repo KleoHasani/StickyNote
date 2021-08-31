@@ -2,6 +2,7 @@
 
 const { contextBridge, ipcRenderer } = require("electron");
 
+// Allowed channels to communicate.
 const ALLOWED_CHANNELS = [
 	"window:new",
 	"window:save",
@@ -11,6 +12,7 @@ const ALLOWED_CHANNELS = [
 	"window:closed",
 ];
 
+// API.
 contextBridge.exposeInMainWorld("electron", {
 	/**
 	 * @param {string} channel
